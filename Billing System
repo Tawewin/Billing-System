@@ -1,0 +1,92 @@
+
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class Billingsystem {
+
+    static ArrayList<ArrayList<Object>> Orders = new ArrayList<ArrayList<Object>>();
+
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.println("     Welcome to Los Pollos Hermanos!");
+        System.out.println("=========================================");
+
+        while (true) {
+            System.out.println("    [1]Order - [2]Exit\n=========================================");
+            int order = input.nextInt();
+
+            if (order == (1)) {
+                ArrayList<Object> OrderDetails = new ArrayList<Object>();
+
+                System.out.println("                   Menu \n===================================================================================\n[1]White Truffle and Gold Pizza - $2,420\n[2]Wagyu Tomahawk Steak - $1,000\n[3]Beluga Caviar - $7,000\n[4]Morisushi Omasake - $160\n[5]King Oyster - $100\n[6]Chicken Cordon Bleu - $500\n[7]Water - $1\n[8]Urban Remedy - $225\n[9]Apple Juice - $15\n[10]Halo-Halo - $20\n[11]Fleur Petrus - $55\n[12]Alsace - $100\n===================================================================================");
+                int FoodOrder = input.nextInt();
+
+                while (!(FoodOrder == (13))) {
+                    if (FoodOrder == (1)) {
+                        OrderDetails.add("White Truffle and Gold Pizza");
+                        OrderDetails.add(2420.0);
+                    } else if (FoodOrder == (2)) {
+                        OrderDetails.add("Wagyu Tomahawk Steak");
+                        OrderDetails.add(1000.0);
+                    } else if (FoodOrder == (3)) {
+                        OrderDetails.add("Beluga Caviar");
+                        OrderDetails.add(7000.0);
+                    } else if (FoodOrder == (4)) {
+                        OrderDetails.add("Morisushi Omasake");
+                        OrderDetails.add(160.0);
+                    } else if (FoodOrder == (5)) {
+                        OrderDetails.add("King Oyster");
+                        OrderDetails.add(100.0);
+                    } else if (FoodOrder == (6)) {
+                        OrderDetails.add("Chicken Cordon Bleu");
+                        OrderDetails.add(500.0);
+                    } else if (FoodOrder == (7)) {
+                        OrderDetails.add("Water");
+                        OrderDetails.add(1.0);
+                    } else if (FoodOrder == (8)) {
+                        OrderDetails.add("Urban Remedy");
+                        OrderDetails.add(225.0);
+                    } else if (FoodOrder == (9)) {
+                        OrderDetails.add("Apple Juice");
+                        OrderDetails.add(15.0);
+                    } else if (FoodOrder == (10)) {
+                        OrderDetails.add("Halo-Halo");
+                        OrderDetails.add(20.0);
+                    } else if (FoodOrder == (11)) {
+                        OrderDetails.add("Fleur Petrus");
+                        OrderDetails.add(55.0);
+                    } else if (FoodOrder == (12)) {
+                        OrderDetails.add("Alsace");
+                        OrderDetails.add(100.0);
+                    } else {
+                        System.out.println("Please select from the MENU");
+
+                    }
+                    System.out.println("                   Menu \n===================================================================================\n[1]White Truffle and Gold Pizza - P2,420\n[2]Wagyu Tomahawk Steak - P1,000\n[3]Beluga Caviar - P7,000\n[4]Morisushi Omasake - P160\n[5]King Oyster - P100\n[6]Chicken Cordon Bleu - P500\n[7]Water - P1\n[8]Urban Remey - P225\n[9]Apple Juice - P15\n[10]Halo-Halo - P20\n[11]Fleur Petrus - P55\n[12]Alsace - P100\n[13]DONE\n===================================================================================");
+                    FoodOrder = input.nextInt();
+                }
+                Orders.add(OrderDetails);
+
+                double TotalBill = 0;
+                double taxRate = 0.12;
+                double serviceRate = 25;
+
+                for (int i = 1; i < OrderDetails.size(); i += 2) {
+                    TotalBill += (Double) OrderDetails.get(i);
+                }
+                System.out.println("\n=====================\n       RECEIPT \n=====================");
+
+                for (int i = 0; i < OrderDetails.size(); i += 2) {
+                    System.out.println(OrderDetails.get(i) + ": P" + OrderDetails.get(i + 1));
+                }
+                System.out.println("-----------------------------\nTax: P" + (TotalBill*taxRate)+ "\nService fee: P"+ serviceRate + "\n-----------------------------\nTotal Amount: P" + (TotalBill+serviceRate) + "\n-----------------------------");
+            } else if (order == (2)) {
+                System.out.println("Thank you for Visiting Los Pollos Hermanos!");
+                break;
+            } else {
+                System.out.println("Please Input [1]Order or [2]Exit");
+            }
+        }
+    }
+}
